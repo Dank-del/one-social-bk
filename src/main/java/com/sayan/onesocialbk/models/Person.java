@@ -1,18 +1,37 @@
 package com.sayan.onesocialbk.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 public class Person {
 
     @Id
     private String id;
-
+    
+    @NotBlank(message = "First name is mandatory")
     private String firstName;
+
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
+    
+    @Indexed(unique = true)
+    @NotNull(message = "Username is mandatory")
     private int phone;
+
     private String bio;
+    
+    @Indexed(unique = true)
+    @NotBlank(message = "Email is mandatory")
     private String email;
+
+    @Indexed(unique = true)
+    @NotBlank(message = "Username is mandatory")
     private String username;
+
+    @NotBlank(message = "Password is mandatory")
     private String password;
 
 
