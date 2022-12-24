@@ -1,15 +1,21 @@
 package com.sayan.onesocialbk.models;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Person {
 
     @Id
     private String id;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date expiration;
     
     @NotBlank(message = "First name is mandatory")
     private String firstName;
@@ -145,6 +151,21 @@ public class Person {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return Date return the expiration
+     */
+    public Date getExpiration() {
+        return expiration;
+    }
+
+
+    /**
+     * @param expiration the expiration to set
+     */
+    public void setExpiration(Date expiration) {
+        this.expiration = expiration;
     }
 
 }
